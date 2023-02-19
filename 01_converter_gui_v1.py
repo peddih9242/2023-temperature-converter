@@ -29,7 +29,7 @@ class Converter:
                                 font=("Arial", "14"))
         self.temp_entry.grid(row=2, padx=10, pady=10)
 
-        self.temp_error = Label(self.temp_frame, text="Please enter a number",
+        self.temp_error = Label(self.temp_frame, text="",
                                 fg="#9C0000")
         self.temp_error.grid(row=3)
 
@@ -39,7 +39,8 @@ class Converter:
         self.to_celsius_button = Button(self.button_frame, text="To Celsius",
                                         bg="#990099",
                                         fg=button_fg,
-                                        font=button_font, width=12)
+                                        font=button_font, width=12,
+                                        command=self.to_celsius)
         self.to_celsius_button.grid(row=0, column=0, padx=5, pady=5)
 
         self.to_fahrenheit_button = Button(self.button_frame, text="To Fahrenheit",
@@ -62,7 +63,38 @@ class Converter:
 
         self.history_export.grid(row=1, column=1, padx=5, pady=5)
 
+    # temperature checking function, takes a minimum value and makes sure
+    # number input is larger than min value
+    def temp_check(self, min_value):
 
+        has_error = "no"
+        error = "Please enter a number larger than {}.".format(min_value)
+
+        try:
+            response = self.temp_entry.get()
+            response = float(response)
+
+            if response < min_value:
+                has_error = "yes"
+
+        except ValueError:
+            has_error = "yes"
+
+        if has_error == "yes":
+            print(self.temp_error.config(text=error, fg="#9C0000"))
+        else:
+            print(self.temp_error.config(text="You are OK", fg="blue"))
+
+            # enable history button if valid input given
+            self.history_export.config(state=NORMAL)
+
+            return response
+
+
+    # check temperature is more than -459 and convert it
+    def to_celsius(self):
+
+        self.temp_check(-459)
 
 
 # main routine

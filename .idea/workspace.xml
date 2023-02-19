@@ -20,21 +20,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="01_converter_gui_v1.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="01_converter_gui_v1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/01_converter_gui_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="45" column="56" selection-start-line="45" selection-start-column="56" selection-end-line="45" selection-end-column="56" />
+            <state relative-caret-position="153">
+              <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="02_check_input.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="02_check_input.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/02_check_input.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -56,9 +56,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/00_sandpit.py" />
-        <option value="$PROJECT_DIR$/01_converter_gui_v1.py" />
         <option value="$PROJECT_DIR$/01_check_input.py" />
         <option value="$PROJECT_DIR$/02_check_input.py" />
+        <option value="$PROJECT_DIR$/01_converter_gui_v1.py" />
       </list>
     </option>
   </component>
@@ -121,7 +121,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python.02_check_input">
+  <component name="RunManager" selected="Python.01_converter_gui_v1">
     <configuration default="false" name="01_converter_gui_v1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -332,8 +332,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.02_check_input" />
-        <item index="1" class="java.lang.String" itemvalue="Python.01_converter_gui_v1" />
+        <item index="0" class="java.lang.String" itemvalue="Python.01_converter_gui_v1" />
+        <item index="1" class="java.lang.String" itemvalue="Python.02_check_input" />
         <item index="2" class="java.lang.String" itemvalue="Python.00_sandpit" />
         <item index="3" class="java.lang.String" itemvalue="Python.__init__" />
       </list>
@@ -357,7 +357,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3611691" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -449,18 +449,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_check_input.py" />
     <entry file="file://$PROJECT_DIR$/02_converter_gui_v1.py" />
-    <entry file="file://$PROJECT_DIR$/01_converter_gui_v1.py">
+    <entry file="file://$PROJECT_DIR$/02_check_input.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="45" column="56" selection-start-line="45" selection-start-column="56" selection-end-line="45" selection-end-column="56" />
+        <state relative-caret-position="0">
+          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_check_input.py">
+    <entry file="file://$USER_HOME$/.PyCharm2016.2/system/python_stubs/-732917855/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="354">
+          <caret line="246" column="4" selection-start-line="246" selection-start-column="4" selection-end-line="246" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_converter_gui_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
           <folding />
         </state>
       </provider>
