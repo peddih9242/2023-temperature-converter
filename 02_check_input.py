@@ -1,33 +1,26 @@
-def temp_check(temp_type):
+# temperature checking function, takes a minimum value and makes sure
+# number input is larger than min value
+def temp_check(min_value):
+
+    error = "Please enter a number larger than {}.".format(min_value)
     valid = False
     while not valid:
         try:
-            if temp_type == "celsius":
-                lower_limit = -273
-                response = int(input("Celsius: "))
-                if response > lower_limit:
-                    valid = True
-                else:
-                    print("Please enter a number above {}.".format(lower_limit))
-            elif temp_type == "fahrenheit":
-                lower_limit = -459
-                response = int(input("Fahrenheit: "))
-                if response > lower_limit:
-                    valid = True
-                else:
-                    print("Please enter a number above {}.".format(lower_limit))
+            response = float(input("Choose a number: "))
+
+            if response < min_value:
+                print(error)
             else:
-                print("Error: valid temperature unit not received")
-                return 0
+                return response
 
         except ValueError:
-            print("Please enter a number above {}.".format(lower_limit))
-
-    return response
+            print(error)
 
 # main routine
 
 for item in range(5):
-    type_temp = input("What type of temperature? ")
-    temp_check(type_temp)
+    temp_check(-273)
     print()
+
+for item in range(5):
+    temp_check(-459)
