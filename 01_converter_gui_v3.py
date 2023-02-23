@@ -11,6 +11,8 @@ class Converter:
         self.var_has_error = StringVar()
         self.var_has_error.set("no")
 
+        self.all_calculations = []
+
         # common format for all buttons
         # Arial size 14 bold, with white text
         button_font = ("Arial", "14", "bold")
@@ -47,14 +49,14 @@ class Converter:
                                         bg="#990099",
                                         fg=button_fg,
                                         font=button_font, width=12,
-                                        command=self.to_celsius)
+                                        command=lambda: self.temp_convert(-459))
         self.to_celsius_button.grid(row=0, column=0, padx=5, pady=5)
 
         self.to_fahrenheit_button = Button(self.button_frame, text="To Fahrenheit",
                                            bg="#009900",
                                            fg=button_fg,
                                            font=button_font, width=12,
-                                           command=self.to_fahrenheit)
+                                           command=lambda: self.temp_convert(-273))
         self.to_fahrenheit_button.grid(row=0, column=1, padx=5, pady=5)
 
         self.help_info = Button(self.button_frame, text="Help / Info",
@@ -104,26 +106,44 @@ class Converter:
             self.history_export.config(state=NORMAL)
             return response
 
+    @staticmethod
+    def round_ans(val):
+        var_rounded = (val * 2 + 1) // 2
+        return "{:.0f}".format(var_rounded)
 
-    # check temperature is more than -459 and convert it
-    def to_celsius(self):
+    # check temperature is valid then convert it
+    def temp_convert(self, min_val):
+        to_convert = self.temp_check(min_val)
+        set_feedback = "yes"
+        answer = ""
+        from_to = ""
 
-        to_convert_f = self.temp_check(-459)
 
-        if to_convert_f != "invalid":
+        if to_convert == "invalid":
+            set_feedback = "no"
+
+        elif min_val == -459:
             # do calculation
-            self.var_feedback.set("Converting {} to C :)".format(to_convert_f))
+            answer = (to_convert - 32) * 5/9
+            from_to = "{} F is {} C".format(to_convert, answer)
+        
+        # convert to fahrenheit
+        else:
+            answer = to_convert * 1.8 + 32
+            from_to = "{} C is {} F".format(to_convert, answer)
 
-        self.output_answer()
+        if set_feedback == "yes":
+            to_convert = self.round_ans(to_convert)
+            answer = self.round_ans(answer)
+            
+            # create user output and add to calculation history
+            feedback = from_to.format(to_convert, answer)
+            self.var_feedback.set(feedback)
 
-    # check temperature is more than -273 and convert it
-    def to_fahrenheit(self):
+            self.all_calculations.append(feedback)
 
-        to_convert_c = self.temp_check(-273)
-
-        if to_convert_c != "invalid":
-            # do calculation
-            self.var_feedback.set("Converting {} to F :)".format(to_convert_c))
+            # -- delete code below when history component is working
+            print(self.all_calculations)
 
         self.output_answer()
 
