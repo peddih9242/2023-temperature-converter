@@ -23,28 +23,18 @@
       <file leaf-file-name="01_converter_gui_v1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01_converter_gui_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
+            <state relative-caret-position="1309">
               <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="01_converter_gui_v2.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/01_converter_gui_v2.py">
+      <file leaf-file-name="01_converter_gui_v3.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/01_converter_gui_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="03_temp_conversions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_temp_conversions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+            <state relative-caret-position="2559">
+              <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -115,6 +105,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -135,7 +126,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -148,7 +138,7 @@
       <recent name="C:\Users\peddih9242\OneDrive - Massey High School\2023_Schoolwork\COM301\2023-temperature-converter" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.03_temp_conversions">
+  <component name="RunManager" selected="Python.01_converter_gui_v3">
     <configuration default="false" name="01_converter_gui_v1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -162,23 +152,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="2023-temperature-converter" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_converter_gui_v1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="00_sandpit" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="2023-temperature-converter" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/00_sandpit.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -230,6 +203,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="2023-temperature-converter" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03_temp_conversions.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="01_converter_gui_v3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="2023-temperature-converter" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_converter_gui_v3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -370,18 +360,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.01_converter_gui_v1" />
-      <item index="1" class="java.lang.String" itemvalue="Python.00_sandpit" />
-      <item index="2" class="java.lang.String" itemvalue="Python.02_check_input" />
-      <item index="3" class="java.lang.String" itemvalue="Python.01_converter_gui_v2" />
-      <item index="4" class="java.lang.String" itemvalue="Python.03_temp_conversions" />
+      <item index="1" class="java.lang.String" itemvalue="Python.02_check_input" />
+      <item index="2" class="java.lang.String" itemvalue="Python.01_converter_gui_v2" />
+      <item index="3" class="java.lang.String" itemvalue="Python.03_temp_conversions" />
+      <item index="4" class="java.lang.String" itemvalue="Python.01_converter_gui_v3" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.03_temp_conversions" />
-        <item index="1" class="java.lang.String" itemvalue="Python.01_converter_gui_v2" />
-        <item index="2" class="java.lang.String" itemvalue="Python.01_converter_gui_v1" />
-        <item index="3" class="java.lang.String" itemvalue="Python.02_check_input" />
-        <item index="4" class="java.lang.String" itemvalue="Python.00_sandpit" />
+        <item index="0" class="java.lang.String" itemvalue="Python.01_converter_gui_v3" />
+        <item index="1" class="java.lang.String" itemvalue="Python.03_temp_conversions" />
+        <item index="2" class="java.lang.String" itemvalue="Python.01_converter_gui_v2" />
+        <item index="3" class="java.lang.String" itemvalue="Python.01_converter_gui_v1" />
+        <item index="4" class="java.lang.String" itemvalue="Python.02_check_input" />
       </list>
     </recent_temporary>
   </component>
@@ -440,6 +430,38 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/01_converter_gui_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_converter_gui_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_temp_conversions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_check_input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/01_converter_gui_v1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -514,7 +536,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_converter_gui_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
+        <state relative-caret-position="1309">
           <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
           <folding />
         </state>
@@ -524,7 +546,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
           <caret line="4580" column="9" selection-start-line="4580" selection-start-column="0" selection-end-line="4582" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -546,8 +567,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_converter_gui_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
+        <state relative-caret-position="59">
+          <caret line="108" column="25" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_converter_gui_v3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2559">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding />
         </state>
       </provider>

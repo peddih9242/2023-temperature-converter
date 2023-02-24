@@ -1,5 +1,6 @@
 from tkinter import *
 
+
 class Converter:
 
     def __init__(self):
@@ -31,7 +32,7 @@ class Converter:
                        "then press one of the buttons to convert " \
                        "it from centigrade to Fahrenheit."
         self.temp_instructions = Label(self.temp_frame, text=instructions,
-                                       wrap=250, width=40, justify="left")
+                                       wraplength=250, width=40, justify="left")
         self.temp_instructions.grid(row=1)
 
         self.temp_entry = Entry(self.temp_frame,
@@ -49,27 +50,30 @@ class Converter:
                                         bg="#990099",
                                         fg=button_fg,
                                         font=button_font, width=12,
-                                        command=lambda: self.temp_convert(-459))
+                                        command=lambda: self.temp_convert(-459),
+                                        activebackground="#8a018a")
         self.to_celsius_button.grid(row=0, column=0, padx=5, pady=5)
 
         self.to_fahrenheit_button = Button(self.button_frame, text="To Fahrenheit",
                                            bg="#009900",
                                            fg=button_fg,
                                            font=button_font, width=12,
-                                           command=lambda: self.temp_convert(-273))
+                                           command=lambda: self.temp_convert(-273),
+                                           activebackground="#017301")
         self.to_fahrenheit_button.grid(row=0, column=1, padx=5, pady=5)
 
         self.help_info = Button(self.button_frame, text="Help / Info",
                                 bg="#e6ab17",
                                 fg=button_fg,
-                                font=button_font, width=12)
+                                font=button_font, width=12,
+                                activebackground="#bf8d0d")
         self.help_info.grid(row=1, column=0, padx=5, pady=5)
 
         self.history_export = Button(self.button_frame, text="History / Export",
                                      bg="#2a0e99",
                                      fg=button_fg,
                                      font=button_font, width=12,
-                                     state=DISABLED)
+                                     state=DISABLED, activebackground="#1f0878")
 
         self.history_export.grid(row=1, column=1, padx=5, pady=5)
 
@@ -118,24 +122,25 @@ class Converter:
         answer = ""
         from_to = ""
 
-
         if to_convert == "invalid":
             set_feedback = "no"
 
         elif min_val == -459:
             # do calculation
-            answer = (to_convert - 32) * 5/9
-            from_to = "{} F is {} C".format(to_convert, answer)
-        
+            answer = (to_convert - 32) * 5 / 9
+            rounded_answer = self.round_ans(answer)
+            rounded_to_convert = self.round_ans(to_convert)
+            from_to = "{} F is {} C".format(rounded_to_convert, rounded_answer)
+
         # convert to fahrenheit
         else:
             answer = to_convert * 1.8 + 32
-            from_to = "{} C is {} F".format(to_convert, answer)
+            rounded_answer = self.round_ans(answer)
+            rounded_to_convert = self.round_ans(to_convert)
+            from_to = "{} C is {} F".format(rounded_to_convert, rounded_answer)
 
         if set_feedback == "yes":
-            to_convert = self.round_ans(to_convert)
-            answer = self.round_ans(answer)
-            
+
             # create user output and add to calculation history
             feedback = from_to.format(to_convert, answer)
             self.var_feedback.set(feedback)
@@ -164,6 +169,7 @@ class Converter:
             self.output_label.config(fg="#004C00")
 
         self.output_label.config(text=output)
+
 
 # main routine
 if __name__ == "__main__":
