@@ -33,6 +33,8 @@ class DisplayHistory:
 
     def __init__(self, partner):
         background = "#ffe6cc"
+        all_calculations = ["0 degrees C = 32 degrees F", "0 degrees F = -18 degrees C",
+                            "-273 degrees C = -459 degrees F"]
 
         self.history_box = Toplevel()
 
@@ -51,23 +53,44 @@ class DisplayHistory:
                                    font=("Arial", "16", "bold"))
         self.history_title.grid(row=0, pady=5)
 
-        help_text = "To use the program, simply enter the temperature you wish to " \
-                    "convert and then choose to convert to either degrees Celsius (centigrade) " \
-                    "or Fahrenheit.\n\nNote that -273 degrees C (-459 F) is absolute zero " \
-                    "(the coldest possible temperature). If you try to convert a temperature " \
-                    "that is less than -273 degrees C, you will get an error message. To see " \
-                    "your calculation history and export it to a text file, please click the " \
-                    "'History / Export' button."
+        history_text = "Below are your recent calculations - showing {} / {}" \
+                       " calculations. All calculations are shown to the nearest degree".format(len(all_calculations), len(all_calculations))
 
-        self.history_text = Label(self.history_frame, text=help_text,
-                                  wraplength=250, width=40, justify="left")
+        self.history_text = Label(self.history_frame, text=history_text,
+                                  wraplength=300, width=50, justify="left")
         self.history_text.grid(row=1, padx=5, pady=5)
 
-        self.close_button = Button(self.history_frame, text="Close",
-                                   bg="#e6ab17", fg="#FFFFFF",
+        self.show_history = Label(self.history_frame, text=all_calculations,
+                                  width=40, background=background, wraplength=300)
+        self.show_history.grid(row=2, padx=5, pady=5)
+
+        export_text = "Either choose a custom file name (and push <Export>) or" \
+                      "simply push <Export> to save your calculations in a text" \
+                      "file. If the filename already exists, it will be overwritten."
+        self.export_text = Label(self.history_frame, text=export_text, width=50, wraplength=300,
+                                 justify="left")
+        self.export_text.grid(row=3, padx=5, pady=5)
+
+        self.filename_entry = Entry(self.history_frame, width=50)
+        self.filename_entry.grid(row=4, padx=5, pady=5, ipady=10)
+
+        self.filename_error = Label(self.history_frame, text="Error message if filename invalid",
+                                    fg="#ab3a40")
+        self.filename_error.grid(row=5)
+
+        self.history_button_frame = Frame(self.history_frame, padx=5, pady=5)
+        self.history_button_frame.grid(row=6)
+
+        self.export_button = Button(self.history_button_frame, text="Export",
+                                    bg="#1c2591", fg="#FFFFFF", activebackground="#121969",
+                                    width=7)
+        self.export_button.grid(row=0, column=0)
+
+        self.close_button = Button(self.history_button_frame, text="Close",
+                                   bg="#b1b1b3", fg="#FFFFFF",
                                    command=partial(self.close_history, partner),
-                                   activebackground="#bf8d0d", width=7)
-        self.close_button.grid(row=2, pady=5)
+                                   activebackground="#a1a1a1", width=7)
+        self.close_button.grid(row=0, column=1)
 
     # close history dialogue (used by button and x at top of dialogue)
     def close_history(self, partner):

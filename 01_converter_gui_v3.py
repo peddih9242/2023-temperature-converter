@@ -1,6 +1,7 @@
 from tkinter import *
 from functools import partial  # to prevent unwanted windows
 
+
 class Converter:
 
     def __init__(self):
@@ -145,7 +146,6 @@ class Converter:
             from_to = "{} C is {} F".format(rounded_to_convert, rounded_answer)
 
         if set_feedback == "yes":
-
             # create user output and add to calculation history
             feedback = from_to.format(to_convert, answer)
             self.var_feedback.set(feedback)
@@ -200,12 +200,12 @@ class DisplayHelp:
         self.help_title.grid(row=0, pady=5)
 
         help_text = "To use the program, simply enter the temperature you wish to " \
-               "convert and then choose to convert to either degrees Celsius (centigrade) " \
-               "or Fahrenheit.\n\nNote that -273 degrees C (-459 F) is absolute zero " \
-               "(the coldest possible temperature). If you try to convert a temperature " \
-               "that is less than -273 degrees C, you will get an error message. To see " \
-               "your calculation history and export it to a text file, please click the " \
-               "'History / Export' button."
+                    "convert and then choose to convert to either degrees Celsius (centigrade) " \
+                    "or Fahrenheit.\n\nNote that -273 degrees C (-459 F) is absolute zero " \
+                    "(the coldest possible temperature). If you try to convert a temperature " \
+                    "that is less than -273 degrees C, you will get an error message. To see " \
+                    "your calculation history and export it to a text file, please click the " \
+                    "'History / Export' button."
 
         self.help_text = Label(self.help_frame, text=help_text,
                                wraplength=250, width=40, justify="left", bg=background)
