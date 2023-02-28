@@ -13,7 +13,8 @@ while response != "xxx":
 
     to_be_reversed.append(response)
 
-# print reversed order of lists
+# print last 5 items in list in reverse order (or whole list
+# if list length < 5)
 if len(to_be_reversed) >= MAX_CALCS:
     print("\nMost Recent")
     for item in range(0, MAX_CALCS):
