@@ -12,8 +12,8 @@ class Converter:
         self.var_max_calcs = IntVar()
         self.var_max_calcs.set(max_calcs)
 
-        # function converts contents of calculation list into a string
-        calc_string_text = self.get_calc_string(calc_list)
+        self.all_calculations = ["0 degrees C = 32 degrees F", "0 degrees F = -18 degrees C",
+                                 "-273 degrees C = -459 degrees F"]
 
         # common format for all buttons
         # Arial size 14 bold, with white text
@@ -35,45 +35,14 @@ class Converter:
                                      command=lambda: self.to_history(self.all_calculations))
         self.history_export.grid(row=1, column=0, padx=5, pady=5)
 
-    # change calculation list into a string so that it can
-    # be outputted as a label
-    def get_calc_string(self, var_calculations):
-        # get maximum calculations to display
-        # (was set in __init__ function)
-        max_calcs = self.var_max_calcs.get()
-        calc_string = ""
-
-        # work out how many times we need to loop
-        # to output either last five calcs or all calcs
-        if len(var_calculations) >= max_calcs:
-            stop = max_calcs
-
-        else:
-            stop = len(var_calculations)
-
-        # iterate to all but last item,
-        # adding item and line break to calculation string
-        for item in range(0, stop - 1):
-            calc_string += var_calculations[len(var_calculations) - item - 1]
-
-            calc_string += "\n"
-
-        # add final item without an extra linebreak
-        # ie: last item on list will be fifth from the end
-        calc_string += var_calculations[-max_calcs]
-
-        return calc_string
-
     def to_history(self, all_calculations):
         DisplayHistory(self, all_calculations)
 
 
 class DisplayHistory:
 
-    def __init__(self, partner):
+    def __init__(self, partner, all_calculations):
         background = "#ffe6cc"
-        self.all_calculations = ["0 degrees C = 32 degrees F", "0 degrees F = -18 degrees C",
-                            "-273 degrees C = -459 degrees F"]
 
         self.history_box = Toplevel()
 
@@ -92,15 +61,31 @@ class DisplayHistory:
                                    font=("Arial", "16", "bold"))
         self.history_title.grid(row=0, pady=5)
 
-        history_text = "Below are your recent calculations - showing {} / {}" \
-                       " calculations. All calculations are shown to the" \
-                       " nearest degree".format(len(self.all_calculations), len(self.all_calculations))
+        num_calcs = len(all_calculations)
 
-        self.history_text = Label(self.history_frame, text=history_text,
+        max_calcs = 5
+
+        # function converts contents of calculation list into a string
+        calc_string_text = self.get_calc_string(self.all_calculations)
+
+        if num_calcs > max_calcs:
+            calc_background = "#FFE6CC"  # peach colour
+            showing_all = "Below are your recent calculations - showing {} / {}" \
+                          " calculations. Please export your calculations" \
+                          "to see your full calculation history".format(num_calcs, max_calcs)
+
+        else:
+            calc_background = "#B4FACB"  # pale green colour
+            showing_all = "Below is your calculation history."
+
+        # history text and label
+        hist_text = "{} \n\nAll calculations are shown to the nearest degree."
+
+        self.history_text = Label(self.history_frame, text=showing_all,
                                   wraplength=300, width=50, justify="left")
         self.history_text.grid(row=1, padx=5, pady=5)
 
-        self.show_history = Label(self.history_frame, text=["{}\n".format(item) for item in self.all_calculations],
+        self.show_history = Label(self.history_frame, text="",
                                   width=40, background=background, wraplength=300)
 
         self.show_history.grid(row=2, padx=5, pady=5)
@@ -108,7 +93,9 @@ class DisplayHistory:
         export_text = "Either choose a custom file name (and push <Export>) or" \
                       "simply push <Export> to save your calculations in a text" \
                       "file. If the filename already exists, it will be overwritten."
-        self.export_text = Label(self.history_frame, text=export_text, width=50, wraplength=300,
+
+        self.export_text = Label(self.history_frame, text=export_text,
+                                 width=50, wraplength=300,
                                  justify="left")
         self.export_text.grid(row=3, padx=5, pady=5)
 
@@ -139,18 +126,37 @@ class DisplayHistory:
         partner.history_export.config(state=NORMAL)
         self.history_box.destroy()
 
-    def recent_five(self):
-        # print last 5 items in list in reverse order (or whole list
-        # if list length < 5)
-        MAX_CALCS = 5
-        if len(self.all_calculations) >= MAX_CALCS:
-            print("\nMost Recent")
-            for item in range(0, MAX_CALCS):
-                print(self.all_calculations[len(self.all_calculations) - item - 1])
+    # change calculation list into a string so that it can
+    # be outputted as a label
+    def get_calc_string(self, var_calculations):
+        # get maximum calculations to display
+        # (was set in __init__ function)
+        max_calcs = self.var_max_calcs.get()
+        calc_string = ""
+
+        # work out how many times we need to loop
+        # to output either last five calcs or all calcs
+        if len(var_calculations) >= max_calcs:
+            stop = max_calcs
+
         else:
-            print("\nItems from Newest to Oldest")
-            for item in range(len(self.all_calculations)):
-                print(self.all_calculations[len(self.all_calculations) - item - 1])
+            stop = len(var_calculations)
+
+        # iterate to all but last item,
+        # adding item and line break to calculation string
+        for item in range(0, stop - 1):
+            calc_string += var_calculations[len(var_calculations) - item - 1]
+
+            calc_string += "\n"
+
+        # add final item without an extra linebreak
+        # ie: last item on list will be fifth from the end
+        if len(var_calculations) >= max_calcs:
+            calc_string += var_calculations[-max_calcs]
+        else:
+            calc_string += var_calculations[0]
+
+        return calc_string
 
 
 # main routine
