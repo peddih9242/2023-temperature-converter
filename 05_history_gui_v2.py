@@ -5,15 +5,8 @@ from functools import partial  # to prevent unwanted windows
 class Converter:
 
     def __init__(self):
-
-        # set maximum number of calculations to 5
-        # which can be changed to show fewer / more calculations
-        max_calcs = 5
-        self.var_max_calcs = IntVar()
-        self.var_max_calcs.set(max_calcs)
-
-        self.all_calculations = ["0 degrees C = 32 degrees F", "0 degrees F = -18 degrees C",
-                                 "-273 degrees C = -459 degrees F"]
+        self.all_calculations = ['0 F is -18 C', '0 C is 32 F', '11 F is -12 C',
+                                 '11 C is 52 F', '12 F is -11 C']
 
         # common format for all buttons
         # Arial size 14 bold, with white text
@@ -42,9 +35,14 @@ class Converter:
 class DisplayHistory:
 
     def __init__(self, partner, all_calculations):
-        background = "#ffe6cc"
 
         self.history_box = Toplevel()
+
+        # set maximum number of calculations to 5
+        # which can be changed to show fewer / more calculations
+        max_calcs = 5
+        self.var_max_calcs = IntVar()
+        self.var_max_calcs.set(max_calcs)
 
         # disable history button
         partner.history_export.config(state=DISABLED)
@@ -66,27 +64,27 @@ class DisplayHistory:
         max_calcs = 5
 
         # function converts contents of calculation list into a string
-        calc_string_text = self.get_calc_string(self.all_calculations)
+        calc_string_text = self.get_calc_string(all_calculations)
 
         if num_calcs > max_calcs:
             calc_background = "#FFE6CC"  # peach colour
             showing_all = "Below are your recent calculations - showing {} / {}" \
-                          " calculations. Please export your calculations" \
-                          "to see your full calculation history".format(num_calcs, max_calcs)
+                          " calculations. Please export your calculations " \
+                          "to see your full calculation history".format(max_calcs, num_calcs)
 
         else:
             calc_background = "#B4FACB"  # pale green colour
             showing_all = "Below is your calculation history."
 
         # history text and label
-        hist_text = "{} \n\nAll calculations are shown to the nearest degree."
+        hist_text = "{} \n\nAll calculations are shown to the nearest degree.".format(showing_all)
 
-        self.history_text = Label(self.history_frame, text=showing_all,
+        self.history_text = Label(self.history_frame, text=hist_text,
                                   wraplength=300, width=50, justify="left")
         self.history_text.grid(row=1, padx=5, pady=5)
 
-        self.show_history = Label(self.history_frame, text="",
-                                  width=40, background=background, wraplength=300)
+        self.show_history = Label(self.history_frame, text=calc_string_text,
+                                  width=40, background=calc_background, wraplength=300)
 
         self.show_history.grid(row=2, padx=5, pady=5)
 
