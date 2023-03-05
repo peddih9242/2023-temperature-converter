@@ -3,6 +3,7 @@ from functools import partial  # to prevent unwanted windows
 from datetime import date
 import re
 
+
 class Converter:
 
     def __init__(self):
@@ -37,6 +38,8 @@ class DisplayHistory:
 
     def __init__(self, partner, all_calculations):
 
+        self.filename_ok = None
+        self.problem = None
         self.history_box = Toplevel()
 
         # set maximum number of calculations to 5
@@ -44,6 +47,9 @@ class DisplayHistory:
         max_calcs = 5
         self.var_max_calcs = IntVar()
         self.var_max_calcs.set(max_calcs)
+
+        # set filename variable
+        self.var_filename = StringVar()
 
         # disable history button
         partner.history_export.config(state=DISABLED)
@@ -178,12 +184,12 @@ class DisplayHistory:
 
         if filename_ok == "":
             filename += ".txt"
+            self.filename_error.config(text="You are OK")
 
         else:
-            filename = filename_ok
+            self.filename_error.config(text=filename_ok)
 
         return filename
-
 
     # retrieves date and creates DD_MM_YYYY string
     @staticmethod
@@ -195,12 +201,10 @@ class DisplayHistory:
 
         return "{}_{}_{}".format(day, month, year)
 
-
     # checks that filename only contains letters,
     # numbers and underscores. returns either "" if
     # filename is ok or the problem if an error is found
-    @staticmethod
-    def check_filename(filename):
+    def check_filename(self, filename):
         problem = ""
 
         # regular expression to check filename is valid
@@ -224,7 +228,20 @@ class DisplayHistory:
 
         return problem
 
-        
+    # give feedback to user based on if valid input given
+    # --delete after implemented-- change entry window colour and error message
+    def make_file(self):
+
+        # retrieve filename
+        filename = self.filename_entry.get()
+
+        if filename == "":
+            filename = self.filename_maker(filename)
+
+        else:
+            filename = self.check_filename(filename)
+
+
 # main routine
 if __name__ == "__main__":
     root = Tk()
