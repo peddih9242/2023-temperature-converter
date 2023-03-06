@@ -38,8 +38,6 @@ class DisplayHistory:
 
     def __init__(self, partner, all_calculations):
 
-        self.filename_ok = None
-        self.problem = None
         self.history_box = Toplevel()
 
         # set maximum number of calculations to 5
@@ -48,8 +46,9 @@ class DisplayHistory:
         self.var_max_calcs = IntVar()
         self.var_max_calcs.set(max_calcs)
 
-        # set filename variable
+        # set up filename & calculation strings
         self.var_filename = StringVar()
+        self.var_calc_string = StringVar()
 
         # disable history button
         partner.history_export.config(state=DISABLED)
@@ -72,6 +71,7 @@ class DisplayHistory:
 
         # function converts contents of calculation list into a string
         calc_string_text = self.get_calc_string(all_calculations)
+        self.var_calc_string.set(calc_string_text)
 
         if num_calcs > max_calcs:
             calc_background = "#FFE6CC"  # peach colour
@@ -107,16 +107,17 @@ class DisplayHistory:
         self.filename_entry = Entry(self.history_frame, width=50)
         self.filename_entry.grid(row=4, padx=5, pady=5, ipady=10)
 
-        self.filename_error = Label(self.history_frame, text="Error message if filename invalid",
-                                    fg="#ab3a40")
-        self.filename_error.grid(row=5)
+        self.filename_feedback = Label(self.history_frame, text="",
+                                       wraplength=300,
+                                       font=("Arial", "13", "bold"))
+        self.filename_feedback.grid(row=5)
 
         self.history_button_frame = Frame(self.history_frame, padx=5, pady=5)
         self.history_button_frame.grid(row=6)
 
         self.export_button = Button(self.history_button_frame, text="Export",
                                     bg="#1c2591", fg="#FFFFFF", activebackground="#121969",
-                                    width=7, command=lambda: self.filename_maker(self.filename_entry.get()))
+                                    width=7, command=lambda: self.make_file())
         self.export_button.grid(row=0, column=0)
 
         self.close_button = Button(self.history_button_frame, text="Close",
@@ -171,23 +172,11 @@ class DisplayHistory:
         # creates default filename
         # (YYYY_MM_DD_temperature_calculations)
         if filename == "":
-
             # set filename_ok to "" so we can see
             # default name for testing purposes
             filename_ok = ""
             date_part = self.get_date()
             filename = "{}_temperature_calculations".format(date_part)
-
-        # checks filename has only a-z / A-Z / underscores
-        else:
-            filename_ok = self.check_filename(filename)
-
-        if filename_ok == "":
-            filename += ".txt"
-            self.filename_error.config(text="You are OK")
-
-        else:
-            self.filename_error.config(text=filename_ok)
 
         return filename
 
@@ -224,7 +213,7 @@ class DisplayHistory:
 
         if problem != "":
             problem = "{}. Use letters / numbers / " \
-                    "underscores only".format(problem)
+                      "underscores only".format(problem)
 
         return problem
 
@@ -236,10 +225,26 @@ class DisplayHistory:
         filename = self.filename_entry.get()
 
         if filename == "":
+            # get date and create default filename
             filename = self.filename_maker(filename)
 
+        # check that filename is valid
+        valid = self.check_filename(filename)
+
+        # shows output to show the user if input was okay or not
+        if valid == "":
+            filename += ".txt"
+            exported_text = "Success! Your calculation history has been saved as {}".format(filename)
+            self.filename_entry.config(bg="#b3e8b5")
+            self.filename_feedback.config(text=exported_text, fg="#108f16")
+
         else:
-            filename = self.check_filename(filename)
+            self.filename_entry.config(bg="#eda4a4")
+            self.filename_feedback.config(text=valid, fg="#ab3a40")
+
+        # get calculation string and set stringvar filename
+        self.var_filename.set(filename)
+        calc_string = self.var_calc_string.get()
 
 
 # main routine
