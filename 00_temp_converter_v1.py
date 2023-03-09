@@ -13,7 +13,7 @@ class Converter:
         # initialise variables (such as the feedback variable)
         self.var_feedback = StringVar()
         self.var_feedback.set("")
-
+        
         self.var_has_error = StringVar()
         self.var_has_error.set("no")
 
