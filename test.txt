@@ -1,0 +1,15 @@
+**** Temperature Calculations ****
+
+Generated: 09/03/2023
+
+Here is your calculation history from oldest to newest.
+10 F is -12 C
+20 F is -7 C
+20 C is 68 F
+30 F is -1 C
+30 C is 86 F
+40 F is 4 C
+40 C is 104 F
+50 F is 10 C
+50 C is 122 F
+
