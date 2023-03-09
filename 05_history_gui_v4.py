@@ -50,15 +50,6 @@ class DisplayHistory:
         self.var_filename = StringVar()
         self.var_calc_string = StringVar()
         self.var_calc_list = StringVar()
-        self.var_todays_date = StringVar()
-
-        # make a calculation string from oldest to newest (only used when exporting)
-        calc_history_text = ""
-        for item in all_calculations:
-            calc_history_text += item
-            calc_history_text += "\n"
-
-        self.var_calc_list.set(calc_history_text)
 
         # disable history button
         partner.history_export.config(state=DISABLED)
@@ -191,22 +182,19 @@ class DisplayHistory:
         return filename
 
     # retrieves date and creates DD_MM_YYYY string
-    def get_date(self):
+    @staticmethod
+    def get_date():
         today = date.today()
         day = today.strftime("%d")
         month = today.strftime("%m")
         year = today.strftime("%Y")
-
-        todays_date = "{}/{}/{}".format(day, month, year)
-        self.var_todays_date.set(todays_date)
 
         return "{}_{}_{}".format(day, month, year)
 
     # checks that filename only contains letters,
     # numbers and underscores. returns either "" if
     # filename is ok or the problem if an error is found
-    @staticmethod
-    def check_filename(filename):
+    def check_filename(self, filename):
         problem = ""
 
         # regular expression to check filename is valid
@@ -231,6 +219,7 @@ class DisplayHistory:
         return problem
 
     # give feedback to user based on if valid input given
+    # --delete after implemented-- change entry window colour and error message
     def make_file(self):
 
         # retrieve filename
@@ -249,41 +238,18 @@ class DisplayHistory:
             exported_text = "Success! Your calculation history has been saved as {}".format(filename)
             self.filename_entry.config(bg="#b3e8b5")
             self.filename_feedback.config(text=exported_text, fg="#108f16")
-            self.var_filename.set(filename)
-
-            # write content to file
-            self.write_to_file()
 
         else:
             self.filename_entry.config(bg="#eda4a4")
             self.filename_feedback.config(text=valid, fg="#ab3a40")
 
-    def write_to_file(self):
-
         # get calculation string and set stringvar filename
-        self.get_date()
+        self.var_filename.set(filename)
+        calc_string = self.var_calc_string.get()
 
-        generated_date = self.var_todays_date.get()
-        filename = self.var_filename.get()
+        export_file = open("{}".format(self.var_filename), "w++")
 
-        # set up strings to be written to file
-        heading = "**** Temperature Calculations ****\n"
-        date_generated = "Generated: {}\n".format(generated_date)
-        sub_heading = "Here is your calculation history from oldest to newest."
-        calc_list = self.var_calc_list.get()
 
-        output_list = [heading, date_generated, sub_heading, calc_list]
-
-        # open text file
-        export_file = open(filename, "w+")
-
-        # write output to file
-        for item in output_list:
-            export_file.write(item)
-            export_file.write("\n")
-
-        # close text file
-        export_file.close()
 
 
 # main routine
